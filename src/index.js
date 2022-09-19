@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./components/App";
+import "./index.css";
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+function Header(props) {
+  return <h1>{props}</h1>;
+}
+
+ReactDOM.render(<App></App>, document.getElementById("root"));
