@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import List from "./List";
 import Search from "./Search";
 
@@ -22,21 +22,31 @@ const App = () => {
     },
   ];
 
-  const [searchWord, setSearchWord] = React.useState("");
+  const [searchWord, setSearchWord] = React.useState(
+    localStorage.getItem("search") || "React"
+  );
 
+  // **** inpust search handler
   const formHandler = (event) => {
     setSearchWord(event.target.value);
   };
-  // console.log(`searching world ${searchTerm}`);
 
   let searchStories = list.filter((story) => {
     return story.title.includes(searchWord);
   });
-  console.log();
+
+  // sideEffect handler
+
+  useEffect(() => {
+    localStorage.setItem("search", searchWord);
+  }, [searchWord]);
+
+  // ************** jsx part
   return (
-    <ul>
-      <h1 value> </h1>
+    <ul className="app">
+      <h1> just app for fun </h1>
       <Search onSearch={formHandler} searchWord={searchWord}></Search>
+
       <List stories={searchStories}>fffff</List>
     </ul>
   );

@@ -1,13 +1,18 @@
 import React from "react";
 
-const Search = (props) => {
+const Search = ({ onSearch, searchWord }) => {
   return (
     <div>
       <label htmlFor="search"> search </label>
 
-      <input id="search" type={"text"} onChange={props.onSearch}></input>
+      <input
+        id="search"
+        type={"text"}
+        onChange={onSearch}
+        value={searchWord}
+      ></input>
       <p>
-        search for <strong>{props.searchWord}</strong>
+        search for <strong>{searchWord}</strong>
       </p>
     </div>
   );
